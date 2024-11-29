@@ -2,12 +2,13 @@ package ru.unibell.task.service;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import ru.unibell.task.dto.ClientRequestDto;
-import ru.unibell.task.dto.ClientResponseDto;
+import ru.unibell.task.dto.ClientDto;
 
 public interface ClientService {
 
-    ClientResponseDto create(ClientRequestDto clientEntity);
+    ClientDto create(ClientDto clientEntity);
 
-    Page<ClientResponseDto> getAll(Pageable pageable);
+    Page<ClientDto> getAll(Pageable pageable);
+
+    ClientDto getById(Long id);
 }

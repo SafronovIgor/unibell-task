@@ -1,9 +1,8 @@
 package ru.unibell.task.mapper;
 
 import org.springframework.stereotype.Component;
-import ru.unibell.task.dto.ClientRequestDto;
-import ru.unibell.task.dto.ClientResponseDto;
-import ru.unibell.task.dto.ContactRequestDto;
+import ru.unibell.task.dto.ClientDto;
+import ru.unibell.task.dto.ContactDto;
 import ru.unibell.task.entity.ClientEntity;
 import ru.unibell.task.entity.ContactEntity;
 
@@ -14,19 +13,19 @@ import java.util.stream.Collectors;
 public class ClientMapperImpl implements ClientMapper {
 
     @Override
-    public ClientEntity toEntity(ClientRequestDto dto) {
+    public ClientEntity toEntity(ClientDto dto) {
         return ClientEntity.builder()
                 .name(dto.getName())
                 .build();
     }
 
     @Override
-    public ClientResponseDto toDto(ClientEntity entity, List<ContactEntity> contacts) {
-        List<ContactRequestDto> contactDtos = contacts.stream()
+    public ClientDto toDto(ClientEntity entity, List<ContactEntity> contacts) {
+        List<ContactDto> contactDtos = contacts.stream()
                 .map(this::toContactDto)
                 .collect(Collectors.toList());
 
-        return ClientResponseDto.builder()
+        return ClientDto.builder()
                 .id(entity.getId())
                 .name(entity.getName())
                 .contacts(contactDtos)
@@ -34,9 +33,9 @@ public class ClientMapperImpl implements ClientMapper {
     }
 
     @Override
-    public ContactRequestDto toContactDto(ContactEntity entity) {
-        return ContactRequestDto.builder()
-                .type(entity.getType())
+    public ContactDto toContactDto(ContactEntity entity) {
+        return ContactDto.builder()
+                .type(entity.getType().name())
                 .value(entity.getValue())
                 .build();
     }

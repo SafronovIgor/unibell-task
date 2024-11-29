@@ -18,8 +18,9 @@ public class ContactEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
+    @Enumerated(EnumType.STRING)
     @Column
-    String type;
+    ContactType type;
 
     @Column(name = "contact_value")
     String value;
