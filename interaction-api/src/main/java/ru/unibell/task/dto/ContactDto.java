@@ -11,8 +11,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ContactDto {
+
     @NotBlank
     String type;
+
     @NotBlank
     String value;
 }

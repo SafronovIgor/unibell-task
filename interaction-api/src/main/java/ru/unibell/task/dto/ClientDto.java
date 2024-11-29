@@ -1,5 +1,6 @@
 package ru.unibell.task.dto;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,7 +13,11 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ClientDto {
+
     Long id;
+
+    @NotBlank
     String name;
+
     List<ContactDto> contacts;
 }
